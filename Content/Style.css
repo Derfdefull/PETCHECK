@@ -1,0 +1,402 @@
+﻿
+html, body {
+    font-size: 20px;
+    background-color: #B7B7B7;
+
+}
+
+.text-snow {
+    color: snow;
+}
+
+.text-main {
+    color: var(--main-color);
+}
+
+.border-main {
+    border: solid 1px;
+    border-color: var(--main-color);
+}
+
+.text-underline{
+    text-decoration: underline;
+}
+
+.no-dec {
+    text-decoration: none;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.bg-main {
+    background-color: var(--main-color);
+    color: snow;
+}
+
+.border-radius {
+    border: 3px solid var(--main-color);
+    border-radius: 15px;
+}
+
+.rounded-border-top {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.nav-main {
+    margin: 0;
+    padding: 0;
+    display: block;
+    max-width: 100%;
+    min-width: 360px;
+    min-height: 160px;
+    max-height: 160px;
+    background-repeat: repeat;
+    background-image: url("../IMG/ClinicaEdited.png");
+}
+
+.link {
+    color: var(--main-color);
+}
+
+.img-logo {
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 100;
+    position: relative;
+    vertical-align: top;
+
+}
+
+.img-banner {
+    height: 178px;
+    top: -19px;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+    position: absolute;
+}
+
+.nav-bar-main {
+    display: block;
+    width: 100%;
+    max-width: 1078px;
+    min-height: 75px;
+    background-color: snow;
+    color: var(--main-color);
+    border-bottom-right-radius: 40px;
+    border: 1px solid var(--main-color);
+}
+
+.login-panel {
+    width: 521px;
+    height: 546px;
+    display: block;
+    margin: 0px auto;
+    min-width: 521px;
+    min-height: 546px;
+    background-color: snow;
+    color: var(--main-color);
+    border-top-right-radius: 135px;
+    border-bottom-left-radius: 135px;
+    border: 2px solid var(--main-color);
+}
+
+.login-banner {
+    max-width: 514px;
+    height: 100px;
+    display: block;
+    border-top-right-radius: 135px;
+    background-image: url("../IMG/ClinicaEdited.png");
+}
+
+.form-group {
+    padding: 5px 75px;
+}
+
+
+.form-group > label, input, small {
+    display: block;
+    font-weight: 600;
+}
+
+    .form-group > input {
+        color: snow;
+        width: 100%;
+        height: 45px;
+        padding: 15px;
+        border-top-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        border: 1px solid var(--main-color);
+        background-color: var(--main-color);
+    }
+
+::placeholder {
+    color: lightgray;
+}
+
+.form-group > textarea {
+    padding: 15px;
+    color: snow;
+    min-width: 100%;
+    min-height: 130px;
+    max-height: 130px;
+    border-radius: 15px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    background-color: var(--main-color);
+}
+
+.form-group > select {
+    padding: 15px;
+    color: snow;
+    min-width: 100%;
+    border-radius: 15px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    background-color: var(--main-color);
+}
+
+
+.btn-summit {
+    color: snow;
+    border: 0px;
+    width: 168px;
+    height: 36px;
+    display: block;
+    margin: 0px auto;
+    border: 3px solid;
+    border-radius: 15px;
+    border-color: var(--main-color);
+    background-color: var(--main-color);
+}
+    .btn-summit:hover {
+        background-color: snow;
+        color: var(--main-color);
+        transition: ease .3s all;
+    }
+
+   .Graph{
+       height: auto;
+       max-width: 100%;
+   }
+
+.GraphPanel {
+    padding: 15px;
+    max-width: 800px;
+    
+}
+
+.notes {
+    min-height: 125px;
+    max-height: 125px;
+    overflow: auto;
+}
+
+.notes-link {
+    text-decoration: none;
+    color: snow;
+}
+
+.note-card {
+    width: 250px;
+    height: 70px;
+    margin: 15px 15px 15px 15px;
+    min-width: 250px;
+    min-height: 70px;
+    border-radius: 15px;
+    background-color: snow;
+}
+
+.reg {
+    min-width: 100%;
+    min-height: 290px;
+    max-width: 190px;
+    max-height: 100%;
+}
+
+
+/* The Modal (background) */
+.Mymodal {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 200; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.Mymodal-content {
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 0px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.Myclose {
+    color: snow;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .Myclose:hover,
+    .Myclose:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 150, 199, 0.6);
+}
+
+.img-about{
+    width: 100%;
+    object-fit: cover;
+}
+
+.img-profile {
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+}
+.calendarWrapper {
+    background-color: var(--main-color);
+    padding: 10px;
+    display: inline-block;
+}
+
+.myCalendar {
+    background-color: #f2f2f2;
+    width: 100%;
+    height: 250px;
+    border: none !important;
+}
+
+    .myCalendar a {
+        text-decoration: none;
+    }
+
+    .myCalendar .myCalendarTitle {
+        font-weight: bold;
+        height: 40px;
+        line-height: 40px;
+        background-color: var(--main-color);
+        color: #ffffff;
+        border: none !important;
+    }
+
+    .myCalendar th.myCalendarDayHeader {
+        height: auto;
+    }
+
+    .myCalendar tr {
+        border-bottom: solid 1px #ddd;
+    }
+
+    .myCalendar table tr {
+        border-bottom: none !important;
+    }
+
+    .myCalendar tr:last-child td {
+        border-bottom: none;
+    }
+
+    .myCalendar tr td.myCalendarDay, .myCalendar tr th.myCalendarDayHeader {
+        border-right: solid 1px #ddd;
+    }
+
+    .myCalendar tr td:last-child.myCalendarDay, .myCalendar tr th:last-child.myCalendarDayHeader {
+        border-right: none;
+    }
+
+    .myCalendar td.myCalendarDay:nth-child(7) a {
+        color: #c52e2e !important;
+    }
+
+    .myCalendar .myCalendarNextPrev {
+        text-align: center;
+    }
+
+        .myCalendar .myCalendarNextPrev a {
+            font-size: 1px;
+        }
+
+        .myCalendar .myCalendarNextPrev:nth-child(1) a {
+            color: #4CCAEF !important;
+            background: url("prevMonth.png") no-repeat center center;
+        }
+
+            .myCalendar .myCalendarNextPrev:nth-child(1) a:hover, .myCalendar .myCalendarNextPrev:nth-child(3) a:hover {
+                background-color: transparent;
+            }
+
+        .myCalendar .myCalendarNextPrev:nth-child(3) a {
+            color: #4CCAEF !important;
+            background: url("nextMonth.png") no-repeat center center;
+        }
+
+    .myCalendar td.myCalendarSelector a {
+        background-color: var(--main-color);
+    }
+
+    .myCalendar .myCalendarDayHeader a,
+    .myCalendar .myCalendarDay a,
+    .myCalendar .myCalendarSelector a,
+    .myCalendar .myCalendarNextPrev a {
+        display: block;
+        line-height: 20px;
+    }
+
+    .myCalendar .myCalendarToday {
+        background-color: #f2f2f2;
+        -webkit-box-shadow: 1px 1px 8px 1px #8f8f8f;
+        box-shadow: 1px 1px 8px 1px #8f8f8f;
+        display: inline-block;
+        width: 22px !important;
+        height: 19px !important;
+        border: 2px solid #f2f2f2;
+        margin-left: -1px;
+        margin-top: -1px;
+        position: relative;
+    }
+
+        .myCalendar .myCalendarToday a {
+
+            color: var(--main-color) !important;
+            font-weight: bold;
+        }
+
+           
+
+    .myCalendar .myCalendarDay a:hover,
+    .myCalendar .myCalendarSelector a:hover {
+        background-color: #25bae5;
+    }

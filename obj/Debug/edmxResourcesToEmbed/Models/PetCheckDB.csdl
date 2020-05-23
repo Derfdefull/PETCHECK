@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PetCheckDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cita">
+    <Key>
+      <PropertyRef Name="idCita" />
+    </Key>
+    <Property Name="idCita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Doctor" Type="Int32" Nullable="false" />
+    <Property Name="Mascota" Type="Int32" Nullable="false" />
+    <Property Name="Servicio" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Mascota1" Relationship="Self.FK_Cita_Mascota" FromRole="Cita" ToRole="Mascota" />
+    <NavigationProperty Name="Servicio1" Relationship="Self.FK_Cita_Servicio" FromRole="Cita" ToRole="Servicio" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Cita_Usuario" FromRole="Cita" ToRole="Usuario" />
+    <NavigationProperty Name="Consulta" Relationship="Self.FK_Consulta_Cita" FromRole="Cita" ToRole="Consulta" />
+  </EntityType>
+  <EntityType Name="Clinica">
+    <Key>
+      <PropertyRef Name="idClinica" />
+    </Key>
+    <Property Name="idClinica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="135" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefono" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Servicio" Relationship="Self.FK_Servicio_Clinica" FromRole="Clinica" ToRole="Servicio" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Clinica" FromRole="Clinica" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Consulta">
+    <Key>
+      <PropertyRef Name="idConsulta" />
+    </Key>
+    <Property Name="idConsulta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Diagnostico" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="Mascota" Type="Int32" Nullable="false" />
+    <Property Name="Servicio" Type="Int32" />
+    <Property Name="Doctor" Type="Int32" Nullable="false" />
+    <Property Name="Cita" Type="Int32" />
+    <NavigationProperty Name="Cita1" Relationship="Self.FK_Consulta_Cita" FromRole="Consulta" ToRole="Cita" />
+    <NavigationProperty Name="Mascota1" Relationship="Self.FK_Consulta_Mascota" FromRole="Consulta" ToRole="Mascota" />
+    <NavigationProperty Name="Servicio1" Relationship="Self.FK_Consulta_Servicio" FromRole="Consulta" ToRole="Servicio" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Consulta_Usuario" FromRole="Consulta" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Mascota">
+    <Key>
+      <PropertyRef Name="idMascota" />
+    </Key>
+    <Property Name="idMascota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Raza" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Especie" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Genero" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fecha_Nacimiento" Type="DateTime" Precision="3" />
+    <Property Name="Estatura" Type="Double" />
+    <Property Name="Peso" Type="Double" />
+    <Property Name="Dueño" Type="Int32" />
+    <NavigationProperty Name="Cita" Relationship="Self.FK_Cita_Mascota" FromRole="Mascota" ToRole="Cita" />
+    <NavigationProperty Name="Consulta" Relationship="Self.FK_Consulta_Mascota" FromRole="Mascota" ToRole="Consulta" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Mascota_Usuario" FromRole="Mascota" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Servicio">
+    <Key>
+      <PropertyRef Name="idServicio" />
+    </Key>
+    <Property Name="idServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Precio" Type="Single" Nullable="false" />
+    <Property Name="Clinica" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cita" Relationship="Self.FK_Cita_Servicio" FromRole="Servicio" ToRole="Cita" />
+    <NavigationProperty Name="Clinica1" Relationship="Self.FK_Servicio_Clinica" FromRole="Servicio" ToRole="Clinica" />
+    <NavigationProperty Name="Consulta" Relationship="Self.FK_Consulta_Servicio" FromRole="Servicio" ToRole="Consulta" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="135" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="Int32" />
+    <Property Name="Tipo" Type="Boolean" Nullable="false" />
+    <Property Name="Clinica" Type="Int32" />
+    <NavigationProperty Name="Cita" Relationship="Self.FK_Cita_Usuario" FromRole="Usuario" ToRole="Cita" />
+    <NavigationProperty Name="Clinica1" Relationship="Self.FK_Usuario_Clinica" FromRole="Usuario" ToRole="Clinica" />
+    <NavigationProperty Name="Consulta" Relationship="Self.FK_Consulta_Usuario" FromRole="Usuario" ToRole="Consulta" />
+    <NavigationProperty Name="Mascota" Relationship="Self.FK_Mascota_Usuario" FromRole="Usuario" ToRole="Mascota" />
+  </EntityType>
+  <Association Name="FK_Cita_Mascota">
+    <End Role="Mascota" Type="Self.Mascota" Multiplicity="1" />
+    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mascota">
+        <PropertyRef Name="idMascota" />
+      </Principal>
+      <Dependent Role="Cita">
+        <PropertyRef Name="Mascota" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cita_Servicio">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="idServicio" />
+      </Principal>
+      <Dependent Role="Cita">
+        <PropertyRef Name="Servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cita_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Cita">
+        <PropertyRef Name="Doctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Consulta_Cita">
+    <End Role="Cita" Type="Self.Cita" Multiplicity="0..1" />
+    <End Role="Consulta" Type="Self.Consulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cita">
+        <PropertyRef Name="idCita" />
+      </Principal>
+      <Dependent Role="Consulta">
+        <PropertyRef Name="Cita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Servicio_Clinica">
+    <End Role="Clinica" Type="Self.Clinica" Multiplicity="1" />
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinica">
+        <PropertyRef Name="idClinica" />
+      </Principal>
+      <Dependent Role="Servicio">
+        <PropertyRef Name="Clinica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Clinica">
+    <End Role="Clinica" Type="Self.Clinica" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinica">
+        <PropertyRef Name="idClinica" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="Clinica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Consulta_Mascota">
+    <End Role="Mascota" Type="Self.Mascota" Multiplicity="1" />
+    <End Role="Consulta" Type="Self.Consulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mascota">
+        <PropertyRef Name="idMascota" />
+      </Principal>
+      <Dependent Role="Consulta">
+        <PropertyRef Name="Mascota" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Consulta_Servicio">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+    <End Role="Consulta" Type="Self.Consulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="idServicio" />
+      </Principal>
+      <Dependent Role="Consulta">
+        <PropertyRef Name="Servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Consulta_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Consulta" Type="Self.Consulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Consulta">
+        <PropertyRef Name="Doctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mascota_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Mascota" Type="Self.Mascota" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Mascota">
+        <PropertyRef Name="Dueño" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PetCheckDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cita" EntityType="Self.Cita" />
+    <EntitySet Name="Clinica" EntityType="Self.Clinica" />
+    <EntitySet Name="Consulta" EntityType="Self.Consulta" />
+    <EntitySet Name="Mascota" EntityType="Self.Mascota" />
+    <EntitySet Name="Servicio" EntityType="Self.Servicio" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK_Cita_Mascota" Association="Self.FK_Cita_Mascota">
+      <End Role="Mascota" EntitySet="Mascota" />
+      <End Role="Cita" EntitySet="Cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cita_Servicio" Association="Self.FK_Cita_Servicio">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="Cita" EntitySet="Cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cita_Usuario" Association="Self.FK_Cita_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Cita" EntitySet="Cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Consulta_Cita" Association="Self.FK_Consulta_Cita">
+      <End Role="Cita" EntitySet="Cita" />
+      <End Role="Consulta" EntitySet="Consulta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Servicio_Clinica" Association="Self.FK_Servicio_Clinica">
+      <End Role="Clinica" EntitySet="Clinica" />
+      <End Role="Servicio" EntitySet="Servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Clinica" Association="Self.FK_Usuario_Clinica">
+      <End Role="Clinica" EntitySet="Clinica" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Consulta_Mascota" Association="Self.FK_Consulta_Mascota">
+      <End Role="Mascota" EntitySet="Mascota" />
+      <End Role="Consulta" EntitySet="Consulta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Consulta_Servicio" Association="Self.FK_Consulta_Servicio">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="Consulta" EntitySet="Consulta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Consulta_Usuario" Association="Self.FK_Consulta_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Consulta" EntitySet="Consulta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mascota_Usuario" Association="Self.FK_Mascota_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Mascota" EntitySet="Mascota" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,134 @@
+﻿
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="PETCHECK.Views.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+   
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script src="https://kit.fontawesome.com/8eb1536a49.js" crossorigin="anonymous"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/Style.css" rel="stylesheet" />
+</head>
+<body>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../Scripts/jquery-3.0.0.js"></script>
+    <nav class="nav-main">
+        <img class="img-logo" src="../IMG/LOGO.png" />
+        <img  class="img-banner" src="../IMG/PETS.png" />
+
+       <% if (Session["UserLoged"] != null)
+           { %> 
+        <div class="p-3">
+           <strong class="text-white"> <%= string.Format("Bienvenido! {0} ({1})", aux.Nombre, aux.Alias) %> </strong>
+        </div>
+        <%} %>
+    </nav>
+    <% if (Session["UserLoged"] != null)
+            { %>
+        <div class="nav-bar-main">
+
+            <div class="row ">
+                <div class="col-auto"> 
+                    <a href="Inicio.aspx" class="btn link no-dec"> 
+                        <span style="font-size: 36px; color: #4E96C2;">
+                        <i class="fas fa-home"></i>   
+                        </span>
+                        Inicio 
+                    </a>
+                </div>
+
+                <div class="col-auto"> 
+                    <a href="Usuarios.aspx" class="btn link no-dec"> 
+                        <span style="font-size: 36px; color: #4E96C2;">
+                        <i class="fas fa-user-friends"></i>   
+                        </span>
+                        Usuarios
+                    </a>
+                </div>
+
+                <div class="col-auto"> 
+                    <a href="Clientes.aspx" class="btn link no-dec"> 
+                        <span style="font-size: 36px; color: #4E96C2;">
+                        <i class="fas fa-user-friends"></i>   
+                        </span>
+                        Clientes
+                    </a>
+                </div>
+
+                <div class="col-auto"> 
+                    <a href="Mascotas.aspx" class="btn link no-dec"> 
+                        <span style="font-size: 36px; color: #4E96C2;">
+                        <i class="fas fa-dog"></i>   
+                        </span>
+                        Mascota
+                    </a>
+                </div>
+                
+                <div class="col-auto"> 
+                    <a href="#" class="btn link no-dec"> 
+                        <span style="font-size: 36px; color: #4E96C2;">
+                        <i class="fas fa-user-nurse"></i> 
+                        </span>
+                        Consultas
+                    </a>
+                </div>
+
+                <div class="col-auto"> 
+                    <a href="Agenda.aspx" class="btn link no-dec"> 
+                        <span style="font-size: 36px; color: #4E96C2;">
+                        <i class="fas fa-calendar-alt"></i>   
+                        </span>
+                        Agenda
+                    </a>
+                </div>
+
+                <div class="col-auto"> 
+                    <a href="Servicios.aspx" class="btn link no-dec"> 
+                        <span style="font-size: 36px; color: #4E96C2;">
+                        <i class="fas fa-star-of-life"></i>  
+                        </span>
+                         Servicios
+                    </a>
+                </div>
+
+
+                <div class="col-auto"> 
+                    <a href="#" class="btn link no-dec"> 
+                        <span style="font-size: 36px; color: #4E96C2;">
+                        <i class="fas fa-file-pdf"></i>   
+                        </span>
+                        Reportes 
+                    </a>
+                </div>
+                  
+            </div>
+        </div>
+        <%} %>
+    <br /> <br />
+    <br />
+
+    <form id="form1" runat="server">
+        <div class="container">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <div class="btn fixed-bottom d-flex text-white text-center font-weight-bolder" style="background-color: var(--main-color); font-size: 10px;"> 
+        Copyright © PETCHECK 2020 - Producto de SOFT-CORP -> <a href="AcercaDe.aspx" style="font-size: 10px; color:white;"> Acerca de  </a>
+
+    </div>
+
+    
+    
+    <script src="../Scripts/popper.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    
+</body>
+</html>
