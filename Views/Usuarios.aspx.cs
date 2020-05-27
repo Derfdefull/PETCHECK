@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using PETCHECK.Class;
 
 namespace PETCHECK.Views
 {
@@ -30,10 +31,11 @@ namespace PETCHECK.Views
             try
             {
                 var dbr = new PetCheckDBEntities();
+                
                 dbr.Usuario.Add(new Usuario()
                 {
                     Nombre = TxtRName.Text,
-                    Contraseña = TxtRPws.Text,
+                    Contraseña = Encrypter.ToHash(TxtRPws.Text),
                     Alias = TxtRUser.Text,
                     Tipo = false
                 }); dbr.SaveChanges();

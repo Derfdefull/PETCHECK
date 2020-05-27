@@ -200,6 +200,7 @@
     <Content Include="Views\Main.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Encrypter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

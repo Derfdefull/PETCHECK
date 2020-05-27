@@ -21,7 +21,6 @@
 
            <div class=" d-inline-flex ml-5  m-1  ">
                <asp:TextBox runat="server" CssClass="form-control " ID="TxtInit" TextMode="Date"></asp:TextBox>
-               <asp:TextBox runat="server" CssClass="form-control " ID="TxtFinal" TextMode="Date"></asp:TextBox>
                <asp:Button runat="server" ID="BtnFilter"   CssClass=" btn-summit" Text="Flitrar" />
          </div>
             <div class="w-100 bg-white p-4">

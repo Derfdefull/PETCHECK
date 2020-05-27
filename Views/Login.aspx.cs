@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using PETCHECK.Models;
+using PETCHECK.Class;
 namespace PETCHECK.Views
 {
     public partial class Login : System.Web.UI.Page
@@ -17,7 +18,8 @@ namespace PETCHECK.Views
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
            PetCheckDBEntities db = new PetCheckDBEntities();
-            var query = db.Usuario.Where(st => st.Alias == TxtUser.Text && st.Contraseña == TxtPsw.Text).ToList();
+            var Psw = Encrypter.ToHash(TxtPsw.Text);
+            var query = db.Usuario.Where(st => st.Alias == TxtUser.Text && st.Contraseña == Psw).ToList();
             if (query.Count == 1)
             {
                 var user = query.First(); 
