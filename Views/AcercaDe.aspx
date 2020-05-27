@@ -17,16 +17,31 @@
         los procedimientos actuales dentro de las clínicas del país, para poder cubrir las necesidades de nuestra o nuestras mascotas, 
         en todas sus facetas de salud.</p>
         <hr />
-        <h2> MISIÓN </h2>
-        <p style=" text-align: justify;"> 
-        Ofrecer solución a las problemáticas de registro y manejo de información dentro de las clínicas veterinarias del país, para 
-        brindar un mejor servicio, enfocándonos en conseguir el bienestar más óptimo posible de los animales, y no menos importante,
-        el de los dueños.</p>
-        <hr />
-        <h2> VISIÓN </h2>
-        <p style="text-align: justify;"> 
-        Ofrecer y realizar servicios veterinarios de gran calidad y alto nivel técnico, dirigidos a nuestros clientes y a sus mascotas
-        para satisfacer con excelencia sus necesidades mediante una mejor gestión de su información.</p>
+
+        <div class="row " >
+                <div class="col-4">
+                    <div class="img-profile rounded-circle" style="border: solid 2px var(--main-color);">
+                        <img src="../IMG/Logof.png" class="img-about" />
+                    </div>
+                    <p style="text-align: justify;" class="text-center">UNIVERSIDAD CATOLICA DE EL SALVADOR </p>
+                </div>
+                <div class="col-4">
+                    <div class="img-profile rounded-circle" style="border: solid 2px var(--main-color);">
+                        <img src="../IMG/LOGOCORP.png" class="img-about"/>
+                    </div>
+                    <p style="text-align: justify;" class="text-center"> SOFT-CORP - 2020 </p>
+                </div>
+
+
+                <div class="col-4">
+                    <div class="img-profile rounded-circle" style="border: solid 2px var(--main-color);">
+                        <img src="../IMG/PETC.png" class="img-about"  />
+                    </div>
+                </div>
+
+
+             </div>
+
         <hr />
         <h2> NUESTRO EQUIPO </h2>
         <br />
@@ -52,7 +67,9 @@
 
 
         </div>
+
         <hr />
+                
         <br />
         <p class="text-center font-weight-bolder"> Copyright © PETCHECK 2020 - Producto de SOFT-CORP </p>
     </div>

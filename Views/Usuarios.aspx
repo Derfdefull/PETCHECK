@@ -98,7 +98,7 @@
                          </div>
                          <div class="col-4">
                              <div class="form-group">
-                                <label clasContraseña: </label>
+                                <label class="text-main">Contraseña: </label>
                                 <asp:TextBox runat="server" ID="TxtRPws" PlaceHolder="************" required MaxLength="18"></asp:TextBox>
                                 <small class="text-main"> Introduce la contraseña del usuario. </small>
                             </div>
@@ -203,5 +203,5 @@
                     </script>
             <%}
     } %>
-</label>
+
 </asp:Content>

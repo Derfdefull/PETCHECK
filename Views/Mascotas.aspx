@@ -45,7 +45,7 @@
                                 </div>
                                 <div class=" d-flex text-center">
                                     <a href="./Mascotas.aspx?Edit=<%= pet.idMascota %>" class=" btn-summit no-dec"> Editar </a>
-                                    <a href="./Mascotas.aspx?Own=<%= pet.Dueño %>" class=" btn-summit no-dec"> Dueño </a>
+                                    <a href="./Mascotas.aspx?Own=<%= pet.idMascota %>" class=" btn-summit no-dec"> Dueño </a>
                                 </div>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
                          <div class="col-4">
                              <div class="form-group">
                                 <label class="text-main"> Fecha de Nacimiento: </label>
-                                <asp:TextBox runat="server" ID="TxtRDate"  TextMode="Date" ReadOnly> </asp:TextBox>
+                                <asp:TextBox runat="server" ID="TxtRDate"  TextMode="Date" > </asp:TextBox>
                                 <small class="text-main"> Introduce la fecha de nacimiento de la mascota. </small>
                             </div>
                          </div>
@@ -248,11 +248,45 @@
     <% } %>
 
     <% else if (Request.QueryString["Own"] != null)
-        { %>
+        { var id = int.Parse(Request.QueryString["Own"]);
+          var pet = db.Mascota.Where(st => st.idMascota == id).First();
+            %>
         <div id="myModal" class="Mymodal">
-          <div class="Mymodal-content">
+          <div class="Mymodal-content" style="max-width: 600px;">
             <span class="Myclose">&times;</span>
-            <p>Some text in the Modal..</p>
+            <div class="border-radius rounded-border-top bg-main">
+            <div class="d-block">
+                <h4 class="p-1 pl-4 d-inline-block"> Dueño(a) de <%= pet.Nombre %> </h4>
+                <div class="w-100 bg-white p-3">
+                    <div class="row">
+                        <% 
+                            var owner = db.Usuario.Where(st => st.idUsuario == pet.Dueño).ToList();
+                            if (owner.Count > 0)
+                                foreach (var own in owner)
+                                { %>
+                                <div class="col-5">
+                                    <div class="reg border-radius  bg-main m-1">
+                                        <h6 class="p-1 m-0"> <%= own.Nombre %> </h6>
+                                        <div class="bg-white p-1 text-main text-center">
+                               
+                                            <small class="pt-2"> Telefono: </small>
+                                            <small class="pb-2">  <%= own.Telefono %> </small>
+     
+                                            <small> Direccion: </small>
+                                            <small style="overflow: auto; overflow-x: hidden;  min-height: 125px;"> 
+                                                <%= own.Direccion %>
+                                            </small>
+          
+                                        </div>
+                                    </div>
+                                </div>
+                    <%}  else { %>
+                          <h3 class="text-main"> Esta mascota no tiene dueño. </h3>
+                       <%}%>
+                    </div>
+                  </div>
+                </div>
+             </div>
           </div>
         </div>
         <script src="../Scripts/Modal.js"></script>

@@ -166,12 +166,48 @@
        
     <% } %>
 
-    <% if (Request.QueryString["Pets"] != null)
-         { %>
+   <% else if (Request.QueryString["Pets"] != null)
+        { var id = int.Parse(Request.QueryString["Pets"]);
+          var owner = db.Usuario.Where(st => st.idUsuario == id).First();
+            %>
         <div id="myModal" class="Mymodal">
-          <div class="Mymodal-content">
+          <div class="Mymodal-content" style="max-width: 800px;">
             <span class="Myclose">&times;</span>
-            <p>Some text in the Modal..</p>
+            <div class="border-radius rounded-border-top bg-main">
+            <div class="d-block">
+                <h4 class="p-1 pl-4 d-inline-block"> Mascotas de <%= owner.Nombre %> </h4>
+                <div class="w-100 bg-white p-3">
+                    <div class="row">
+                        <% 
+                            var Pets = owner.Mascota.ToList();
+                            if (Pets.Count > 0)
+                                foreach (var pet in Pets)
+                                { %>
+                            <div class="col-4">
+                                <div class="reg border-radius  bg-main m-1">
+                                    <h6 class="p-1 m-0"> <%= pet.Nombre %> </h6>
+                                    <div class="bg-white p-1 text-main text-center">
+                               
+                                        <small class="pt-2"> Genero: </small>
+                                        <small class="pb-2">  <%= pet.Genero %> </small>
+                                
+                                        <small> Raza: </small>
+                                        <small class="pb-2">  <%= pet.Raza %> </small>
+                                
+                                        <small> Peso y Estatura: </small>
+                                        <small> <%= pet.Peso %> kg <%= pet.Estatura %> inch</small>
+                                        <br />
+                                    </div>
+         
+                                </div>
+                            </div>
+                    <%}  else { %>
+                          <h3 class="text-main"> Este cliente no tiene mascotas. </h3>
+                       <%}%>
+                    </div>
+                  </div>
+                </div>
+             </div>
           </div>
         </div>
         <script src="../Scripts/Modal.js"></script>

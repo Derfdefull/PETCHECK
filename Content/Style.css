@@ -197,8 +197,8 @@ html, body {
 }
 
 .notes {
-    min-height: 125px;
-    max-height: 125px;
+    min-height: 400px;
+    max-height: 400px;
     overflow: auto;
 }
 
@@ -215,6 +215,7 @@ html, body {
     min-height: 70px;
     border-radius: 15px;
     background-color: snow;
+    margin: 10px auto;
 }
 
 .reg {
