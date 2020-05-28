@@ -15,10 +15,12 @@ namespace PETCHECK.Views
         protected PetCheckDBEntities db;
         protected List<Usuario> UserList;
         protected Usuario Edit;
+        protected Usuario main;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             db = new PetCheckDBEntities();
+            main = (Usuario)Session["UserLoged"];
             UserList = db.Usuario.Where(st => st.Contraseña != null).ToList();
             if(Request.QueryString["K"] != null) {
                 UserList = UserList.Where(st => st.Alias.ToLower().Contains(Request.QueryString["K"].ToLower())).ToList();
@@ -53,8 +55,10 @@ namespace PETCHECK.Views
             {
                 var i = int.Parse(Request.QueryString["Edit"]);
                 Edit = db.Usuario.First(st => st.idUsuario == i);
-                Edit.Nombre = TxtEName.Text;
                 Edit.Alias = TxtEUser.Text;
+                Edit.Nombre = TxtEName.Text;
+                if(main.Tipo == true || main.Alias == Edit.Alias)
+                Edit.Contraseña = Encrypter.ToHash(TxtEPwd.Text);
                 _ = CmbEType.SelectedIndex == 0 ? Edit.Tipo = true : Edit.Tipo = false;
                 db.SaveChanges();
                 Response.Redirect("~/Views/Usuarios.aspx?Er=0");

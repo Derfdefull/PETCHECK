@@ -123,16 +123,16 @@
     <% if (Request.QueryString["Edit"] != null)
          {  var i = int.Parse(Request.QueryString["Edit"]);
             Edit = db.Usuario.First(st => st.idUsuario == i);%>
-        <div id="myModal" class="Mymodal">
-          <div class="Mymodal-content rounded bg-main">
+        <div id="myModal" class="Mymodal"  >
+          <div class="Mymodal-content rounded bg-main"  style="max-width: 800px;">
 
-            <span class="Myclose">&times;yclose">&times;</span>
+            <span class="Myclose">&times;</span>
 
-              <h4 class="ml-2 p-1"> Nuevo Usuario </h4>
-              <div class="bg-white pl-5 pr-5 pt-4">
+              <h4 class="ml-2 p-1"> Editar Usuario - <%= Edit.Alias %> </h4>
+              <div class="bg-white pl-4 pr-4 pt-4">
                   <form method="post">
                      <div class="row">
-                         <div class="col-4">
+                         <div class="col-6">
                              <div class="form-group">
                                 <label class="text-main"> Nombre: </label>
                                  <% TxtEName.Text = Edit.Nombre; %>
@@ -141,7 +141,7 @@
                             </div>
                          </div>
 
-                         <div class="col-4">
+                         <div class="col-6">
                              <div class="form-group">
                                 <label class="text-main"> Usuario: </label>
                                  <% TxtEUser.Text = Edit.Alias; %>
@@ -149,7 +149,10 @@
                                 <small class="text-main"> Introduce nombre de usuario. </small>
                             </div>
                          </div>
-                         <div class="col-4">
+
+                         <div class="col-12"> </div>
+
+                         <div class="col-6">
                              <div class="form-group">
                                  <% _ = Edit.Tipo == true ? CmbEType.SelectedIndex = 0 : CmbEType.SelectedIndex = 1; %>
                                 <label class="text-main"> Tipo: </label>
@@ -160,7 +163,16 @@
                                 <small class="text-main"> Selecciona el tipo de usuario. </small>
                             </div>
                          </div>
-
+                         <% if (main.Tipo == true || Edit.Alias == main.Alias)
+                             {%>
+                             <div class="col-6">
+                                 <div class="form-group">
+                                    <label class="text-main">Contraseña: </label>
+                                    <asp:TextBox runat="server" ID="TxtEPwd" PlaceHolder="************" required MaxLength="18"></asp:TextBox>
+                                    <small class="text-main"> Introduce la contraseña del usuario. </small>
+                                </div>
+                             </div>
+                         <%} %>
                         
                      </div>
 

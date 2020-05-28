@@ -19,8 +19,8 @@
             </div>
 
            <div class=" d-inline-flex ml-5  m-1  ">
-               <asp:TextBox runat="server" CssClass="form-control " ID="TxtInit" TextMode="Date"></asp:TextBox>
-               <asp:Button runat="server" ID="BtnFilter"   CssClass=" btn-summit" Text="Flitrar" />
+               <asp:TextBox runat="server" CssClass="form-control " ID="TxtInit" TextMode="Date" ></asp:TextBox>
+               <asp:Button runat="server" ID="BtnFilter"   CssClass=" btn-summit" Text="Flitrar" OnClick="BtnFilter_Click" />
          </div>
             <div class="w-100 bg-white p-4">
                 <div class="row">
@@ -28,27 +28,38 @@
             if (CList.Count > 0)
                 foreach (var ct in CList)
                 { %>
-                     <div class=" bg-main rounded col-3 m-1" style="max-height: 250px;">
-                      <a href="#" class="btn link bg-main text-white" style="font-size: 14px; text-decoration:none; max-height: 250px;"> 
-                        <span style="font-size: 36px; color: snow;">
-                        </span>
-                          <div class="pl-3 text-white font-weight-bold">
-                             <br /> Doctor:  <br /> <%=ct.Usuario.Nombre %>
-                             <br /> Mascota:  <br /> <%=ct.Mascota1.Nombre %> 
-                             <br /> Fecha:  <br /> <%= ct.Fecha %>
-                              Diagnostico:
-                             <small class="font-weight-bold" style="overflow: auto; overflow-x: hidden;  min-height: 125px;"> 
+
+                    <div class="col-3">
+                        <div class="reg border-radius  bg-main m-1">
+                            <h6 class="p-1 m-0"> <%= ct.Fecha %> </h6>
+                            <div class="bg-white p-1 text-main text-center">
+                               
+                                <small class="pt-2"> Doctor: </small>
+                                <small class="pb-2">  <%=ct.Usuario.Nombre %> </small>
+     
+                                <small> Mascota: </small>
+                                <small  class="pb-2"> <%=ct.Mascota1.Nombre %>  </small>
+ 
+                                <small> Diagnostico: </small>
+                                <small class="font-weight-bold" style="overflow: auto; overflow-x: hidden;  min-height: 125px;"> 
                                         <%= ct.Diagnostico %>
-                             </small>
-                          </div>
-                        </a>
-                      </div>
+                                </small>
+                                
+          
+                            </div>
+                            <div class=" d-flex text-center">
+                                <br />
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
                     
                     <%}  else {
 
                         if(Request.QueryString["K"] != null)
                         {%>
-                            <h1 class="text-main"> Lo sentimos, no hay datos que coincidan con las fechas ingresadas. </h1>
+                            <h2 class="text-main"> Lo sentimos, no hay datos que coincidan con las fechas ingresadas. </h2>
                         <%}
                                 else
                                 {%>

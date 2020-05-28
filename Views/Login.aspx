@@ -28,7 +28,7 @@
                 <small> Introduzca su Constaseña. </small>
             </div>
             
-            <h6 class="text-center text-underline"> <a href="#" class="text-main"> Olvidé mi Contraseña.  </a> </h6>
+            <h6 class="text-center text-underline"> <a href="mailto:Soporte@PetCheck.com.sv?subject=Recuperar_Contraseña" class="text-main"> Olvidé mi Contraseña.  </a> </h6>
             <br />
             <asp:Button runat="server" ID="BtnLogin" Text="Iniciar" CssClass=" btn-summit " OnClick="BtnLogin_Click" />
 

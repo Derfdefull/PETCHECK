@@ -13,12 +13,17 @@ namespace PETCHECK.Views
     {
         protected PetCheckDBEntities db;
         protected List<Cita> CList;
-        
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
             db = new PetCheckDBEntities();
             CList = db.Cita.ToList();
+            if (Request.QueryString["k"] != null && Request.QueryString["k"] != "")
+            {
+                var date = DateTime.Parse(Request.QueryString["k"]);
+                CList = CList.Where(st => st.Fecha.Day == date.Day).ToList();
+            }
             if (Request.QueryString["New"] != null)
             {
                 foreach (var doc in db.Usuario.Where(st => st.Tipo == true).ToList())
@@ -34,7 +39,10 @@ namespace PETCHECK.Views
                     cmbRServ.Items.Add(new ListItem() { Enabled = true, Text = srv.Nombre, Value = srv.idServicio.ToString() });
                 }
             }
+
         }
+
+            
 
         protected void BtnSave_Click(object sender, EventArgs e)
         {
@@ -61,6 +69,11 @@ namespace PETCHECK.Views
             {
                 Response.Redirect("~/Views/Agenda.aspx?Er=2");
             }
+        }
+
+        protected void BtnFilter_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("~/Views/Agenda.aspx?k={0}", TxtInit.Text));
         }
     }
 }

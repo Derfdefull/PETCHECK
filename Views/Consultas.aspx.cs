@@ -18,6 +18,11 @@ namespace PETCHECK.Views
         {
             db = new PetCheckDBEntities();
             CList = db.Consulta.ToList();
+            if (Request.QueryString["k"] != null && Request.QueryString["k"] != "")
+            {
+                var date = DateTime.Parse(Request.QueryString["k"]);
+                CList = CList.Where(st => st.Fecha.Value.Day == date.Day).ToList();
+            }
             if (Request.QueryString["New"] != null)
             {
                 foreach (var doc in db.Usuario.Where(st => st.Tipo == true).ToList())
@@ -88,5 +93,10 @@ namespace PETCHECK.Views
                 Response.Redirect("~/Views/Consultas.aspx?Er=2");
             }
 }
+
+        protected void BtnFilter_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(string.Format("~/Views/Consultas.aspx?k={0}", TxtInit.Text));
+        }
     }
 }

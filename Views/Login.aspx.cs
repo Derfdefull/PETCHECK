@@ -12,12 +12,13 @@ namespace PETCHECK.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
+            Session["UserLoged"] = null;
         }
 
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
-           PetCheckDBEntities db = new PetCheckDBEntities();
+            PetCheckDBEntities db = new PetCheckDBEntities();
             var Psw = Encrypter.ToHash(TxtPsw.Text);
             var query = db.Usuario.Where(st => st.Alias == TxtUser.Text && st.Contraseña == Psw).ToList();
             if (query.Count == 1)

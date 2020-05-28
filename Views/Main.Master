@@ -24,7 +24,7 @@
        <% if (Session["UserLoged"] != null)
            { %> 
         <div class="p-3">
-           <strong class="text-white"> <%= string.Format("Bienvenido! {0} ({1})", aux.Nombre, aux.Alias) %> </strong>
+           <strong class="text-white bg-main"> <%= string.Format("Bienvenido! {0} ({1})", aux.Nombre, aux.Alias) %> </strong> <a href="Login.aspx" class="bg-white text-main btn p-1 rounded no-dec"> Cerrar Sesion </a>>
         </div>
         <%} %>
     </nav>
@@ -70,7 +70,7 @@
                 </div>
                 
                 <div class="col-auto"> 
-                    <a href="#" class="btn link no-dec"> 
+                    <a href="Consultas.aspx" class="btn link no-dec"> 
                         <span style="font-size: 36px; color: #4E96C2;">
                         <i class="fas fa-user-nurse"></i> 
                         </span>

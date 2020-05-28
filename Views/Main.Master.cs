@@ -18,6 +18,11 @@ namespace PETCHECK.Views
             {
                 aux = (Usuario)Session["UserLoged"];
             }
+            else
+            {
+                if(Request.QueryString["log"] == null)
+                Response.Redirect("~/Views/Login.aspx?log=0");
+            }
         }
     }
 }
